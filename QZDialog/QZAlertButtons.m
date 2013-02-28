@@ -3,7 +3,6 @@
 //  HudDemo
 //
 //  Created by pengfei huang on 13-2-21.
-//  Copyright (c) 2013年 Matej Bukovinski. All rights reserved.
 //
 
 #import "QZAlertButtons.h"

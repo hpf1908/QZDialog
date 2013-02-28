@@ -18,7 +18,18 @@
 {
     [super viewDidLoad];
     self.title = @"QZDialog Demo";
+	UIView *content = [[self.view subviews] objectAtIndex:0];
+	((UIScrollView *)content).contentSize = content.bounds.size;
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	UIView *content = [[self.view subviews] objectAtIndex:0];
+	((UIScrollView *)content).contentSize = content.bounds.size;
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +75,16 @@
 	hud.title = @"正在加载视频";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
+	[hud show:YES hideAfterDelay:3.0f];
+}
+
+- (IBAction)showWithProgressButton:(id)sender
+{
+    QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:hud];
+	hud.title = @"正在加载视频";
+	hud.alertMode = QZAlertProgressWithButton;
+	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES];
 }
 
@@ -100,6 +121,15 @@
     hud.centerView = [[UIImageView alloc] initWithImage:check];
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:1.0f];
+}
+
+- (IBAction)showWithConfirmBlock:(id)sender
+{
+    [QZAlertDialog showConfirmDlgAddedTo:self.navigationController.view title:@"测试" content:@"测试block" animated:YES confirm:^(QZAlertDialog *dlg1) {
+        NSLog(@"inputText block %@",dlg1.inputText);
+    } cancel:^(QZAlertDialog *dlg1) {
+        NSLog(@"inputText block %@",dlg1.inputText);
+    }];
 }
 
 #pragma mark - task

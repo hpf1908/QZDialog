@@ -3,7 +3,7 @@
 //  HudDemo
 //
 //  Created by pengfei huang on 13-2-25.
-//  Copyright (c) 2013年 Matej Bukovinski. All rights reserved.
+//  Copyright (c) 2013年 flyhuang. All rights reserved.
 //
 
 #import "QZAlertDialog.h"
@@ -34,6 +34,224 @@ static const CGFloat kTipHeight = 57.0;
 @synthesize tipImage;
 @synthesize inputText = _inputText;
 @synthesize dlgBackGroundImage = _dlgBackGroundImage;
+@synthesize confirmBlock, cancelBlock;
+
+#pragma mark - class methods
++ (QZAlertDialog*)showConfirmDlgAddedTo:(UIView *)view
+                                  title:(NSString*)title
+                                content:(NSString*)content
+                               animated:(BOOL)animated
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertConfirm;
+    dialog.removeFromSuperViewOnHide = YES;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showCancelDlgAddedTo:(UIView *)view
+                                 title:(NSString*)title
+                               content:(NSString*)content
+                              animated:(BOOL)animated
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertCancel;
+    dialog.removeFromSuperViewOnHide = YES;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showInputDlgAddedTo:(UIView *)view
+                                title:(NSString*)title
+                              content:(NSString*)content
+                             animated:(BOOL)animated
+                        alertDelegate:(id<QZAlertDialogDelegate>)delegate
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertInput;
+    dialog.alertDelegate = delegate;
+    dialog.removeFromSuperViewOnHide = YES;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showProgressDlgAddedTo:(UIView *)view
+                                   title:(NSString*)title
+                                 content:(NSString*)content
+                                animated:(BOOL)animated
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertProgress;
+    dialog.removeFromSuperViewOnHide = YES;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showProgressHasButtonDlgAddedTo:(UIView *)view
+                                            title:(NSString*)title
+                                          content:(NSString*)content
+                                         animated:(BOOL)animated
+                                    alertDelegate:(id<QZAlertDialogDelegate>)delegate
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertProgressWithButton;
+    dialog.removeFromSuperViewOnHide = YES;
+    dialog.alertDelegate = delegate;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showTipDlgAddedTo:(UIView *)view
+                              title:(NSString*)title
+                            content:(NSString*)content
+                           animated:(BOOL)animated
+                     hideAfterDelay:(float)delay
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertTip;
+    dialog.removeFromSuperViewOnHide = YES;
+    [dialog show:animated hideAfterDelay:delay];
+    return [dialog autorelease];
+}
+
++ (NSArray *)allDlgsForView:(UIView *)view
+{
+    NSMutableArray *huds = [NSMutableArray array];
+	NSArray *subviews = view.subviews;
+	Class hudClass = [QZAlertDialog class];
+	for (UIView *aView in subviews) {
+		if ([aView isKindOfClass:hudClass]) {
+			[huds addObject:aView];
+		}
+	}
+	return [NSArray arrayWithArray:huds];
+}
+
++ (NSUInteger)hideAllHUDsForView:(UIView *)view animated:(BOOL)animated
+{
+    NSArray *huds = [self allDlgsForView:view];
+	for (QZAlertDialog *hud in huds) {
+		hud.removeFromSuperViewOnHide = YES;
+		[hud hide:animated];
+	}
+	return [huds count];
+}
+
++ (BOOL)hideDlgForView:(UIView *)view animated:(BOOL)animated
+{
+    QZAlertDialog *hud = [QZAlertDialog dlgForView:view];
+	if (hud != nil) {
+		hud.removeFromSuperViewOnHide = YES;
+		[hud hide:animated];
+		return YES;
+	}
+	return NO;
+}
+
++ (QZAlertDialog *)dlgForView:(UIView *)view
+{
+	Class hudClass = [QZAlertDialog class];
+	NSEnumerator *subviewsEnum = [view.subviews reverseObjectEnumerator];
+	for (UIView *subview in subviewsEnum) {
+		if ([subview isKindOfClass:hudClass]) {
+			return (QZAlertDialog *)subview;
+		}
+	}
+	return nil;
+}
+
+#if NS_BLOCKS_AVAILABLE
++ (QZAlertDialog*)showConfirmDlgAddedTo:(UIView *)view
+                                  title:(NSString*)title
+                                content:(NSString*)content
+                               animated:(BOOL)animated
+                                confirm:(QZDialogClickEventBlock)confirmClick
+                                 cancel:(QZDialogClickEventBlock)cancelClick
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertConfirm;
+    dialog.removeFromSuperViewOnHide = YES;
+    dialog.confirmBlock = confirmClick;
+    dialog.cancelBlock = cancelClick;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showCancelDlgAddedTo:(UIView *)view
+                                 title:(NSString*)title
+                               content:(NSString*)content
+                              animated:(BOOL)animated
+                                cancel:(QZDialogClickEventBlock)cancelClick
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertCancel;
+    dialog.removeFromSuperViewOnHide = YES;
+    dialog.cancelBlock = cancelClick;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showInputDlgAddedTo:(UIView *)view
+                                title:(NSString*)title
+                              content:(NSString*)content
+                             animated:(BOOL)animated
+                              confirm:(QZDialogClickEventBlock)confirmClick
+                               cancel:(QZDialogClickEventBlock)cancelClick
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertInput;
+    dialog.removeFromSuperViewOnHide = YES;
+    dialog.cancelBlock = cancelClick;
+    dialog.confirmBlock = confirmClick;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
++ (QZAlertDialog*)showProgressHasButtonDlgAddedTo:(UIView *)view
+                                            title:(NSString*)title
+                                          content:(NSString*)content
+                                         animated:(BOOL)animated
+                                           cancel:(QZDialogClickEventBlock)cancelClick
+{
+    QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
+    [view addSubview:dialog];
+    dialog.title = title;
+    dialog.content = content;
+    dialog.alertMode = QZAlertProgressWithButton;
+    dialog.removeFromSuperViewOnHide = YES;
+    dialog.cancelBlock = cancelClick;
+    [dialog show:animated];
+    return [dialog autorelease];
+}
+
+#endif
 
 #pragma mark - Lifecycle
 
@@ -55,6 +273,8 @@ static const CGFloat kTipHeight = 57.0;
         
         self.paddingTopCenter = 15.0;
         self.paddingCenterBottom = 15.0;
+        self.confirmBlock = nil;
+        self.cancelBlock = nil;
         
         self.titleFont = [UIFont systemFontOfSize:kTitleLableFontSize];
 		self.contentFont = [UIFont systemFontOfSize:kContentLabelFontSize];
@@ -192,7 +412,7 @@ static const CGFloat kTipHeight = 57.0;
         case QZAlertProgressWithButton:
         case QZAlertProgress: {
             UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]
-                                                  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+                                                  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
             [indicator startAnimating];
             self.centerView = [indicator autorelease];
         }; break;
@@ -467,15 +687,27 @@ static const CGFloat kTipHeight = 57.0;
             if([_alertDelegate respondsToSelector:@selector(onClickAlertDlgCancelButton:dialog:)]) {
                 [_alertDelegate onClickAlertDlgCancelButton:sender dialog:self];
             }
+            
+            if(self.cancelBlock) {
+                self.cancelBlock(self);
+            }
         } else {
             UIView* view = (UIView*)sender;
             if(view.tag == 0) {
                 if([_alertDelegate respondsToSelector:@selector(onClickAlertDlgCancelButton:dialog:)]) {
                     [_alertDelegate onClickAlertDlgCancelButton:sender dialog:self];
                 }
+                
+                if(self.cancelBlock) {
+                    self.cancelBlock(self);
+                }
             } else {
                 if([_alertDelegate respondsToSelector:@selector(onClickAlertDlgConfirmButton:dialog:)]) {
                     [_alertDelegate onClickAlertDlgConfirmButton:sender dialog:self];
+                }
+                
+                if(self.confirmBlock) {
+                    self.confirmBlock(self);
                 }
             }
         }

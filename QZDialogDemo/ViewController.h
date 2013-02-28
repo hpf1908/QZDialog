@@ -18,8 +18,11 @@
 - (IBAction)showWithCancel:(id)sender;
 - (IBAction)showWithInput:(id)sender;
 - (IBAction)showWithProgress:(id)sender;
+- (IBAction)showWithProgressButton:(id)sender;
 - (IBAction)showWithTip:(id)sender;
 - (IBAction)showWithLabelMixed:(id)sender;
 - (IBAction)showWithCustomInCenter:(id)sender;
+
+- (IBAction)showWithConfirmBlock:(id)sender;
 
 @end
