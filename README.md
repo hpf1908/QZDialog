@@ -1,0 +1,1 @@
+基于 MBProgressHUD 重构出的一个通用dialog类
