@@ -34,7 +34,10 @@ static const CGFloat kTipHeight = 57.0;
 @synthesize tipImage;
 @synthesize inputText = _inputText;
 @synthesize dlgBackGroundImage = _dlgBackGroundImage;
+
+#if NS_BLOCKS_AVAILABLE
 @synthesize confirmBlock, cancelBlock;
+#endif
 
 #pragma mark - class methods
 + (QZAlertDialog*)showConfirmDlgAddedTo:(UIView *)view
@@ -269,15 +272,18 @@ static const CGFloat kTipHeight = 57.0;
         self.paddingBottom = 15.0;
         self.paddingLeft = 15.0;
         self.paddingRight = 15.0;
-        self.autoCloseAfterClick = YES; 
+        self.autoCloseAfterClick = YES;
         
         self.paddingTopCenter = 15.0;
         self.paddingCenterBottom = 15.0;
+        
+#if NS_BLOCKS_AVAILABLE
         self.confirmBlock = nil;
         self.cancelBlock = nil;
+#endif
         
-        self.titleFont = [UIFont systemFontOfSize:kTitleLableFontSize];
-		self.contentFont = [UIFont systemFontOfSize:kContentLabelFontSize];
+        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
         self.tipImage = [UIImage imageNamed:@"icon_success"];
         _inputText = @"";
         self.backgroundColor = [UIColor clearColor];
@@ -297,6 +303,12 @@ static const CGFloat kTipHeight = 57.0;
     self.cancelBtnText = nil;
     self.tipImage = nil;
     self.dlgBackGroundImage = nil;
+    
+#if NS_BLOCKS_AVAILABLE
+    self.confirmBlock = nil;
+    self.cancelBlock = nil;
+#endif
+    
     [super dealloc];
 }
 
@@ -337,7 +349,7 @@ static const CGFloat kTipHeight = 57.0;
             self.minSize = CGSizeMake(100, 100);
         } break;
     }
-
+    
     
     [self setupTopView];
     [self setupCenterView];
@@ -364,7 +376,7 @@ static const CGFloat kTipHeight = 57.0;
             label.text = self.title;
             self.topView = [label autorelease];
         }
-        break;
+            break;
     }
 }
 
@@ -399,6 +411,7 @@ static const CGFloat kTipHeight = 57.0;
             feild.placeholder = @"";
             feild.textColor = [UIColor whiteColor];
             feild.font = [UIFont systemFontOfSize:16.0f];
+            feild.returnKeyType = UIReturnKeyDone;
             
             //保存在成员变量里
             _inputTextField = feild;
@@ -462,7 +475,7 @@ static const CGFloat kTipHeight = 57.0;
             detailsLabel.text = self.content;
             self.bottomView = [detailsLabel autorelease];
         }
-        break;
+            break;
     }
 }
 
@@ -470,7 +483,7 @@ static const CGFloat kTipHeight = 57.0;
 - (void)registerForNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(txtkeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(txtkeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     [super registerForNotifications];
@@ -576,11 +589,11 @@ static const CGFloat kTipHeight = 57.0;
 
 - (void)drawRect:(CGRect)rect
 {
-//    if(self.fixWidth <=0) {
-//        CGSize size = self.size;
-//        size = CGSizeMake(size.width + 20, size.height);
-//        self.size = size;
-//    }
+    //    if(self.fixWidth <=0) {
+    //        CGSize size = self.size;
+    //        size = CGSizeMake(size.width + 20, size.height);
+    //        self.size = size;
+    //    }
     //如果用户没有指定背景图片则用原生父类的背景
     if(self.dlgBackGroundImage) {
         if(self.maskType == QZDialogMaskOpacity) {
@@ -677,20 +690,22 @@ static const CGFloat kTipHeight = 57.0;
 #pragma mark - QZAlertButtonsDelegate
 
 - (void)didClickAlertButton:(id)sender
-{    
+{
     if(_inputTextField) {
         _inputText = _inputTextField.text;
     }
     
-    if([sender isKindOfClass:[UIButton class]]) {        
+    if([sender isKindOfClass:[UIButton class]]) {
         if(self.alertMode == QZAlertCancel) {
             if([_alertDelegate respondsToSelector:@selector(onClickAlertDlgCancelButton:dialog:)]) {
                 [_alertDelegate onClickAlertDlgCancelButton:sender dialog:self];
             }
             
+#if NS_BLOCKS_AVAILABLE
             if(self.cancelBlock) {
                 self.cancelBlock(self);
             }
+#endif
         } else {
             UIView* view = (UIView*)sender;
             if(view.tag == 0) {
@@ -698,17 +713,21 @@ static const CGFloat kTipHeight = 57.0;
                     [_alertDelegate onClickAlertDlgCancelButton:sender dialog:self];
                 }
                 
+#if NS_BLOCKS_AVAILABLE
                 if(self.cancelBlock) {
                     self.cancelBlock(self);
                 }
+#endif
             } else {
                 if([_alertDelegate respondsToSelector:@selector(onClickAlertDlgConfirmButton:dialog:)]) {
                     [_alertDelegate onClickAlertDlgConfirmButton:sender dialog:self];
                 }
                 
+#if NS_BLOCKS_AVAILABLE
                 if(self.confirmBlock) {
                     self.confirmBlock(self);
                 }
+#endif
             }
         }
     }
@@ -736,7 +755,7 @@ static const CGFloat kTipHeight = 57.0;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -772,7 +791,7 @@ static const CGFloat kTipHeight = 57.0;
         self.frame = frame;
         [UIView commitAnimations];
     }
-
+    
 }
 
 - (void)txtkeyboardWillHide:(NSNotification *)notification

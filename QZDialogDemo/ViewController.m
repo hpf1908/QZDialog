@@ -126,9 +126,9 @@
 - (IBAction)showWithConfirmBlock:(id)sender
 {
     [QZAlertDialog showConfirmDlgAddedTo:self.navigationController.view title:@"测试" content:@"测试block" animated:YES confirm:^(QZAlertDialog *dlg1) {
-        NSLog(@"inputText block %@",dlg1.inputText);
+        NSLog(@"inputText confirm block %@",dlg1.inputText);
     } cancel:^(QZAlertDialog *dlg1) {
-        NSLog(@"inputText block %@",dlg1.inputText);
+        NSLog(@"inputText cancel block %@",dlg1.inputText);
     }];
 }
 

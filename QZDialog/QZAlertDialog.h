@@ -21,13 +21,15 @@
 typedef void (^QZDialogClickEventBlock)(QZAlertDialog* dlg);
 #endif
 
+//@notice: 将常用的浮出层类型通过枚举区分，如果以后有比较特殊的浮出层建议创建新的类继承QZBaseDialog去实现,否则耦合太多了
+
 typedef enum {
 	QZAlertConfirm,            //显示两个按钮
 	QZAlertCancel,             //显示单个取消按钮
 	QZAlertInput,              //带一个输入框外加两个按钮
     QZAlertProgress,           //显示进度条
     QZAlertProgressWithButton, //显示进度条，但是底部有按钮
-    QZAlertTip,                //提示信息，上为uilabel，下为uilabel，中间放一张图片tipImage
+    QZAlertTip,                //提示信息，上为uilabel，下为uilabel，中间放一张图片,该图片可以通过tipImage去设置
     QZAlertTipCustomInCenter   //提示信息，上为uilabel，下为uilabel，中间放customView
 } QZAlertMode;
 
