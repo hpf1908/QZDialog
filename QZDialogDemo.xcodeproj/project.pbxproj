@@ -1,0 +1,392 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED1BC0AE16DF028000998820 /* MB_Icon_Tips@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED1BC0AD16DF028000998820 /* MB_Icon_Tips@2x.png */; };
+		ED67B95A16DDFF73002CB0ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED67B95916DDFF73002CB0ED /* UIKit.framework */; };
+		ED67B95C16DDFF73002CB0ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED67B95B16DDFF73002CB0ED /* Foundation.framework */; };
+		ED67B95E16DDFF73002CB0ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED67B95D16DDFF73002CB0ED /* CoreGraphics.framework */; };
+		ED67B96416DDFF73002CB0ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED67B96216DDFF73002CB0ED /* InfoPlist.strings */; };
+		ED67B96616DDFF73002CB0ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED67B96516DDFF73002CB0ED /* main.m */; };
+		ED67B96A16DDFF73002CB0ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED67B96916DDFF73002CB0ED /* AppDelegate.m */; };
+		ED67B96C16DDFF73002CB0ED /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B96B16DDFF73002CB0ED /* Default.png */; };
+		ED67B96E16DDFF73002CB0ED /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B96D16DDFF73002CB0ED /* Default@2x.png */; };
+		ED67B97016DDFF73002CB0ED /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B96F16DDFF73002CB0ED /* Default-568h@2x.png */; };
+		ED67B97316DDFF73002CB0ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED67B97216DDFF73002CB0ED /* ViewController.m */; };
+		ED67B97616DDFF73002CB0ED /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED67B97416DDFF73002CB0ED /* ViewController.xib */; };
+		ED67B98D16DE007E002CB0ED /* bg_alertdialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B97E16DE007E002CB0ED /* bg_alertdialog@2x.png */; };
+		ED67B98E16DE007E002CB0ED /* bg_alertdialog_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B97F16DE007E002CB0ED /* bg_alertdialog_success@2x.png */; };
+		ED67B98F16DE007E002CB0ED /* btn_alertdiaglog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B98016DE007E002CB0ED /* btn_alertdiaglog@2x.png */; };
+		ED67B99016DE007E002CB0ED /* btn_alertdiaglog_click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B98116DE007E002CB0ED /* btn_alertdiaglog_click@2x.png */; };
+		ED67B99116DE007E002CB0ED /* icon_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B98216DE007E002CB0ED /* icon_success@2x.png */; };
+		ED67B99216DE007E002CB0ED /* inputbox_remark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED67B98316DE007E002CB0ED /* inputbox_remark@2x.png */; };
+		ED67B99316DE007E002CB0ED /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = ED67B98416DE007E002CB0ED /* Thumbs.db */; };
+		ED67B99416DE007E002CB0ED /* QZAlertButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = ED67B98716DE007E002CB0ED /* QZAlertButtons.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ED67B99516DE007E002CB0ED /* QZAlertDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = ED67B98916DE007E002CB0ED /* QZAlertDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ED67B99616DE007E002CB0ED /* QZBaseDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = ED67B98B16DE007E002CB0ED /* QZBaseDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED1BC0AD16DF028000998820 /* MB_Icon_Tips@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MB_Icon_Tips@2x.png"; sourceTree = "<group>"; };
+		ED67B95616DDFF73002CB0ED /* QZDialogDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QZDialogDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED67B95916DDFF73002CB0ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ED67B95B16DDFF73002CB0ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ED67B95D16DDFF73002CB0ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ED67B96116DDFF73002CB0ED /* QZDialogDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QZDialogDemo-Info.plist"; sourceTree = "<group>"; };
+		ED67B96316DDFF73002CB0ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ED67B96516DDFF73002CB0ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ED67B96716DDFF73002CB0ED /* QZDialogDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QZDialogDemo-Prefix.pch"; sourceTree = "<group>"; };
+		ED67B96816DDFF73002CB0ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ED67B96916DDFF73002CB0ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ED67B96B16DDFF73002CB0ED /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		ED67B96D16DDFF73002CB0ED /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		ED67B96F16DDFF73002CB0ED /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		ED67B97116DDFF73002CB0ED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		ED67B97216DDFF73002CB0ED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		ED67B97516DDFF73002CB0ED /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		ED67B97E16DE007E002CB0ED /* bg_alertdialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_alertdialog@2x.png"; sourceTree = "<group>"; };
+		ED67B97F16DE007E002CB0ED /* bg_alertdialog_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_alertdialog_success@2x.png"; sourceTree = "<group>"; };
+		ED67B98016DE007E002CB0ED /* btn_alertdiaglog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_alertdiaglog@2x.png"; sourceTree = "<group>"; };
+		ED67B98116DE007E002CB0ED /* btn_alertdiaglog_click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_alertdiaglog_click@2x.png"; sourceTree = "<group>"; };
+		ED67B98216DE007E002CB0ED /* icon_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_success@2x.png"; sourceTree = "<group>"; };
+		ED67B98316DE007E002CB0ED /* inputbox_remark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox_remark@2x.png"; sourceTree = "<group>"; };
+		ED67B98416DE007E002CB0ED /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
+		ED67B98616DE007E002CB0ED /* QZAlertButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZAlertButtons.h; sourceTree = "<group>"; };
+		ED67B98716DE007E002CB0ED /* QZAlertButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZAlertButtons.m; sourceTree = "<group>"; };
+		ED67B98816DE007E002CB0ED /* QZAlertDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZAlertDialog.h; sourceTree = "<group>"; };
+		ED67B98916DE007E002CB0ED /* QZAlertDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZAlertDialog.m; sourceTree = "<group>"; };
+		ED67B98A16DE007E002CB0ED /* QZBaseDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZBaseDialog.h; sourceTree = "<group>"; };
+		ED67B98B16DE007E002CB0ED /* QZBaseDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZBaseDialog.m; sourceTree = "<group>"; };
+		ED67B98C16DE007E002CB0ED /* QZBaseDialog_protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZBaseDialog_protected.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED67B95316DDFF73002CB0ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED67B95A16DDFF73002CB0ED /* UIKit.framework in Frameworks */,
+				ED67B95C16DDFF73002CB0ED /* Foundation.framework in Frameworks */,
+				ED67B95E16DDFF73002CB0ED /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED1BC0AC16DF028000998820 /* custom */ = {
+			isa = PBXGroup;
+			children = (
+				ED1BC0AD16DF028000998820 /* MB_Icon_Tips@2x.png */,
+			);
+			path = custom;
+			sourceTree = "<group>";
+		};
+		ED67B94D16DDFF73002CB0ED = {
+			isa = PBXGroup;
+			children = (
+				ED67B97C16DE007E002CB0ED /* images */,
+				ED67B98516DE007E002CB0ED /* QZDialog */,
+				ED67B95F16DDFF73002CB0ED /* QZDialogDemo */,
+				ED67B95816DDFF73002CB0ED /* Frameworks */,
+				ED67B95716DDFF73002CB0ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED67B95716DDFF73002CB0ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED67B95616DDFF73002CB0ED /* QZDialogDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED67B95816DDFF73002CB0ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED67B95916DDFF73002CB0ED /* UIKit.framework */,
+				ED67B95B16DDFF73002CB0ED /* Foundation.framework */,
+				ED67B95D16DDFF73002CB0ED /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED67B95F16DDFF73002CB0ED /* QZDialogDemo */ = {
+			isa = PBXGroup;
+			children = (
+				ED67B96816DDFF73002CB0ED /* AppDelegate.h */,
+				ED67B96916DDFF73002CB0ED /* AppDelegate.m */,
+				ED67B97116DDFF73002CB0ED /* ViewController.h */,
+				ED67B97216DDFF73002CB0ED /* ViewController.m */,
+				ED67B97416DDFF73002CB0ED /* ViewController.xib */,
+				ED67B96016DDFF73002CB0ED /* Supporting Files */,
+			);
+			path = QZDialogDemo;
+			sourceTree = "<group>";
+		};
+		ED67B96016DDFF73002CB0ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED67B96116DDFF73002CB0ED /* QZDialogDemo-Info.plist */,
+				ED67B96216DDFF73002CB0ED /* InfoPlist.strings */,
+				ED67B96516DDFF73002CB0ED /* main.m */,
+				ED67B96716DDFF73002CB0ED /* QZDialogDemo-Prefix.pch */,
+				ED67B96B16DDFF73002CB0ED /* Default.png */,
+				ED67B96D16DDFF73002CB0ED /* Default@2x.png */,
+				ED67B96F16DDFF73002CB0ED /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED67B97C16DE007E002CB0ED /* images */ = {
+			isa = PBXGroup;
+			children = (
+				ED1BC0AC16DF028000998820 /* custom */,
+				ED67B97D16DE007E002CB0ED /* alertDialog */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		ED67B97D16DE007E002CB0ED /* alertDialog */ = {
+			isa = PBXGroup;
+			children = (
+				ED67B97E16DE007E002CB0ED /* bg_alertdialog@2x.png */,
+				ED67B97F16DE007E002CB0ED /* bg_alertdialog_success@2x.png */,
+				ED67B98016DE007E002CB0ED /* btn_alertdiaglog@2x.png */,
+				ED67B98116DE007E002CB0ED /* btn_alertdiaglog_click@2x.png */,
+				ED67B98216DE007E002CB0ED /* icon_success@2x.png */,
+				ED67B98316DE007E002CB0ED /* inputbox_remark@2x.png */,
+				ED67B98416DE007E002CB0ED /* Thumbs.db */,
+			);
+			path = alertDialog;
+			sourceTree = "<group>";
+		};
+		ED67B98516DE007E002CB0ED /* QZDialog */ = {
+			isa = PBXGroup;
+			children = (
+				ED67B98616DE007E002CB0ED /* QZAlertButtons.h */,
+				ED67B98716DE007E002CB0ED /* QZAlertButtons.m */,
+				ED67B98816DE007E002CB0ED /* QZAlertDialog.h */,
+				ED67B98916DE007E002CB0ED /* QZAlertDialog.m */,
+				ED67B98A16DE007E002CB0ED /* QZBaseDialog.h */,
+				ED67B98B16DE007E002CB0ED /* QZBaseDialog.m */,
+				ED67B98C16DE007E002CB0ED /* QZBaseDialog_protected.h */,
+			);
+			path = QZDialog;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED67B95516DDFF73002CB0ED /* QZDialogDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED67B97916DDFF73002CB0ED /* Build configuration list for PBXNativeTarget "QZDialogDemo" */;
+			buildPhases = (
+				ED67B95216DDFF73002CB0ED /* Sources */,
+				ED67B95316DDFF73002CB0ED /* Frameworks */,
+				ED67B95416DDFF73002CB0ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QZDialogDemo;
+			productName = QZDialogDemo;
+			productReference = ED67B95616DDFF73002CB0ED /* QZDialogDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED67B94E16DDFF73002CB0ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "pengfei huang";
+			};
+			buildConfigurationList = ED67B95116DDFF73002CB0ED /* Build configuration list for PBXProject "QZDialogDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = ED67B94D16DDFF73002CB0ED;
+			productRefGroup = ED67B95716DDFF73002CB0ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED67B95516DDFF73002CB0ED /* QZDialogDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED67B95416DDFF73002CB0ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED67B96416DDFF73002CB0ED /* InfoPlist.strings in Resources */,
+				ED67B96C16DDFF73002CB0ED /* Default.png in Resources */,
+				ED67B96E16DDFF73002CB0ED /* Default@2x.png in Resources */,
+				ED67B97016DDFF73002CB0ED /* Default-568h@2x.png in Resources */,
+				ED67B97616DDFF73002CB0ED /* ViewController.xib in Resources */,
+				ED67B98D16DE007E002CB0ED /* bg_alertdialog@2x.png in Resources */,
+				ED67B98E16DE007E002CB0ED /* bg_alertdialog_success@2x.png in Resources */,
+				ED67B98F16DE007E002CB0ED /* btn_alertdiaglog@2x.png in Resources */,
+				ED67B99016DE007E002CB0ED /* btn_alertdiaglog_click@2x.png in Resources */,
+				ED67B99116DE007E002CB0ED /* icon_success@2x.png in Resources */,
+				ED67B99216DE007E002CB0ED /* inputbox_remark@2x.png in Resources */,
+				ED67B99316DE007E002CB0ED /* Thumbs.db in Resources */,
+				ED1BC0AE16DF028000998820 /* MB_Icon_Tips@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED67B95216DDFF73002CB0ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED67B96616DDFF73002CB0ED /* main.m in Sources */,
+				ED67B96A16DDFF73002CB0ED /* AppDelegate.m in Sources */,
+				ED67B97316DDFF73002CB0ED /* ViewController.m in Sources */,
+				ED67B99416DE007E002CB0ED /* QZAlertButtons.m in Sources */,
+				ED67B99516DE007E002CB0ED /* QZAlertDialog.m in Sources */,
+				ED67B99616DE007E002CB0ED /* QZBaseDialog.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED67B96216DDFF73002CB0ED /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED67B96316DDFF73002CB0ED /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ED67B97416DDFF73002CB0ED /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED67B97516DDFF73002CB0ED /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED67B97716DDFF73002CB0ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		ED67B97816DDFF73002CB0ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED67B97A16DDFF73002CB0ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QZDialogDemo/QZDialogDemo-Prefix.pch";
+				INFOPLIST_FILE = "QZDialogDemo/QZDialogDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		ED67B97B16DDFF73002CB0ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QZDialogDemo/QZDialogDemo-Prefix.pch";
+				INFOPLIST_FILE = "QZDialogDemo/QZDialogDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED67B95116DDFF73002CB0ED /* Build configuration list for PBXProject "QZDialogDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED67B97716DDFF73002CB0ED /* Debug */,
+				ED67B97816DDFF73002CB0ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED67B97916DDFF73002CB0ED /* Build configuration list for PBXNativeTarget "QZDialogDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED67B97A16DDFF73002CB0ED /* Debug */,
+				ED67B97B16DDFF73002CB0ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED67B94E16DDFF73002CB0ED /* Project object */;
+}
