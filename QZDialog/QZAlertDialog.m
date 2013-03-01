@@ -44,6 +44,7 @@ static const CGFloat kTipHeight = 57.0;
                                   title:(NSString*)title
                                 content:(NSString*)content
                                animated:(BOOL)animated
+                          alertDelegate:(id<QZAlertDialogDelegate>)delegate
 {
     QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
     [view addSubview:dialog];
@@ -51,6 +52,7 @@ static const CGFloat kTipHeight = 57.0;
     dialog.content = content;
     dialog.alertMode = QZAlertConfirm;
     dialog.removeFromSuperViewOnHide = YES;
+    dialog.alertDelegate = delegate;
     [dialog show:animated];
     return [dialog autorelease];
 }
@@ -59,6 +61,7 @@ static const CGFloat kTipHeight = 57.0;
                                  title:(NSString*)title
                                content:(NSString*)content
                               animated:(BOOL)animated
+                         alertDelegate:(id<QZAlertDialogDelegate>)delegate
 {
     QZAlertDialog* dialog = [[QZAlertDialog alloc] initWithView:view];
     [view addSubview:dialog];
@@ -66,6 +69,7 @@ static const CGFloat kTipHeight = 57.0;
     dialog.content = content;
     dialog.alertMode = QZAlertCancel;
     dialog.removeFromSuperViewOnHide = YES;
+    dialog.alertDelegate = delegate;
     [dialog show:animated];
     return [dialog autorelease];
 }
@@ -331,10 +335,10 @@ static const CGFloat kTipHeight = 57.0;
             self.minSize = CGSizeZero;
         } break;
         case QZAlertProgress:{
-            self.maskType = QZDialogMaskOpacity;
+            self.maskType = QZDialogMaskNone;
             self.fixWidth = 0;
             self.square = NO;
-            self.minSize = CGSizeZero;
+            self.minSize = CGSizeMake(100, 100);
         } break;
         case QZAlertTip: {
             self.maskType = QZDialogMaskNone;
@@ -459,9 +463,7 @@ static const CGFloat kTipHeight = 57.0;
             buttons.delegate = self;
             self.bottomView = [buttons autorelease];
         } break;
-        case QZAlertProgress: {
-            self.bottomView = nil;
-        } break;
+        case QZAlertProgress:
         case QZAlertTip:
         case QZAlertTipCustomInCenter : {
             UILabel* detailsLabel = [[UILabel alloc] initWithFrame:self.bounds];
@@ -549,10 +551,9 @@ static const CGFloat kTipHeight = 57.0;
         case QZAlertConfirm:
         case QZAlertCancel:
         case QZAlertInput:
-        case QZAlertProgressWithButton:
-        case QZAlertProgress: {
-            
+        case QZAlertProgressWithButton:{
         } break;
+        case QZAlertProgress:
         case QZAlertTip:
         case QZAlertTipCustomInCenter: {
             if([self.bottomView isKindOfClass:[UILabel class]]) {
@@ -730,6 +731,10 @@ static const CGFloat kTipHeight = 57.0;
 #endif
             }
         }
+    }
+    
+    if(_inputTextField) {
+        [_inputTextField resignFirstResponder];
     }
     
     if(self.autoCloseAfterClick) {

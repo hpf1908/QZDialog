@@ -69,12 +69,14 @@ typedef enum {
 + (QZAlertDialog*)showConfirmDlgAddedTo:(UIView *)view
                                title:(NSString*)title
                              content:(NSString*)content
-                            animated:(BOOL)animated;
+                            animated:(BOOL)animated
+                          alertDelegate:(id<QZAlertDialogDelegate>)delegate;
 
 + (QZAlertDialog*)showCancelDlgAddedTo:(UIView *)view
                                   title:(NSString*)title
                                 content:(NSString*)content
-                               animated:(BOOL)animated;
+                               animated:(BOOL)animated
+                          alertDelegate:(id<QZAlertDialogDelegate>)delegate;
 
 + (QZAlertDialog*)showInputDlgAddedTo:(UIView *)view
                                 title:(NSString*)title

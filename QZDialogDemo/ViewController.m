@@ -72,7 +72,9 @@
 - (IBAction)showWithProgress:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-	hud.title = @"正在加载视频";
+//	hud.title = @"正在加载视频";
+    hud.title = nil;
+    hud.content = @"正在加载视频";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:3.0f];
