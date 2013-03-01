@@ -72,9 +72,8 @@
 - (IBAction)showWithProgress:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-//	hud.title = @"正在加载视频";
-    hud.title = nil;
-    hud.content = @"正在加载视频";
+    hud.title = @"正在加载视频";
+//    hud.content = @"正在加载视频";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:3.0f];
@@ -93,11 +92,11 @@
 - (IBAction)showWithTip:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-	hud.title = @"加入特别关心";
-	hud.content = @"用电脑登陆查看吧";
+	hud.title = @"加入特别关心哈哈";
+	hud.content = @"用电脑登陆查看吧哈哈";
 	hud.alertMode = QZAlertTip;
 	hud.removeFromSuperViewOnHide = YES;
-	[hud show:YES hideAfterDelay:1.0f];
+	[hud show:YES hideAfterDelay:5.0f];
 }
 
 - (IBAction)showWithLabelMixed:(id)sender {
@@ -118,7 +117,7 @@
     QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
 	hud.alertMode = QZAlertTipCustomInCenter;
-    hud.content = @"haha";
+    hud.content = @"登录中";
     UIImage *check = [UIImage imageNamed:@"MB_Icon_Tips.png"];
     hud.centerView = [[UIImageView alloc] initWithImage:check];
 	hud.removeFromSuperViewOnHide = YES;

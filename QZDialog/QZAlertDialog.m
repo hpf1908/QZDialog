@@ -17,8 +17,8 @@ static const CGFloat kFixOuterWidth = 296.0f;
 static const CGFloat kButtonsHeight = 48.0f;
 static const CGFloat kInputKeyboardMargin = 15.0f;
 
-static const CGFloat kTipWidth  = 78.0;
-static const CGFloat kTipHeight = 57.0;
+static const CGFloat kTipWidth  = 80.0f;
+static const CGFloat kTipHeight = 80.0;
 
 @implementation QZAlertDialog
 
@@ -307,7 +307,7 @@ static const CGFloat kTipHeight = 57.0;
     self.cancelBtnText = nil;
     self.tipImage = nil;
     self.dlgBackGroundImage = nil;
-    
+    self.alertDelegate = nil;
 #if NS_BLOCKS_AVAILABLE
     self.confirmBlock = nil;
     self.cancelBlock = nil;
@@ -354,6 +354,22 @@ static const CGFloat kTipHeight = 57.0;
         } break;
     }
     
+    if(self.alertMode == QZAlertProgressWithButton) {
+        self.paddingTopCenter = 25.0;
+        self.paddingCenterBottom = 25.0;
+        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+    } else if(self.alertMode == QZAlertTip) {
+        self.paddingTopCenter = 5.0;
+        self.paddingCenterBottom = 5.0;
+        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0f];
+		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:14.0f];
+    } else {
+        self.paddingTopCenter = 15.0;
+        self.paddingCenterBottom = 15.0;
+        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+    }
     
     [self setupTopView];
     [self setupCenterView];
@@ -590,11 +606,6 @@ static const CGFloat kTipHeight = 57.0;
 
 - (void)drawRect:(CGRect)rect
 {
-    //    if(self.fixWidth <=0) {
-    //        CGSize size = self.size;
-    //        size = CGSizeMake(size.width + 20, size.height);
-    //        self.size = size;
-    //    }
     //如果用户没有指定背景图片则用原生父类的背景
     if(self.dlgBackGroundImage) {
         if(self.maskType == QZDialogMaskOpacity) {

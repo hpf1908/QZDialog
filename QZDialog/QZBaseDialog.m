@@ -126,6 +126,7 @@
     self.topView = nil;
     self.centerView = nil;
     self.bottomView = nil;
+    self.delegate = nil;
 	[graceTimer release];
 	[minShowTimer release];
 	[showStarted release];
@@ -158,6 +159,7 @@
         maxSize.width = self.fixWidth - paddingLeft - paddingRight;
     }
     
+    //先计算固定尺寸的view的size，再计算剩下的尺寸
     if(self.topView && self.autoHeightType != QZAutoHeightTop) {
         topSize = [self topSize:maxSize];
         topSize.width = MIN(maxSize.width, topSize.width);
