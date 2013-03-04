@@ -74,7 +74,7 @@
 	[self.navigationController.view addSubview:hud];
 //    hud.title = @"正在加载视频";
 //    hud.content = @"登陆中";
-    hud.content = @"登陆中登陆中陆中";
+    hud.content = @"正在加载视频反反复复";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:3.0f];
@@ -84,7 +84,7 @@
 {
     QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-	hud.title = @"正在加载视频";
+	hud.title = @"正在加载视频反反复复";
 	hud.alertMode = QZAlertProgressWithButton;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES];

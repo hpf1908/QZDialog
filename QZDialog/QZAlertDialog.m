@@ -367,9 +367,9 @@ static const CGFloat kTipHeight = 80.0;
         } break;
         case QZAlertProgress:{
             self.maskType = QZDialogMaskNone;
-            self.fixWidth = 0;
-            self.square = NO;
-            self.minSize = CGSizeMake(130, 130);
+            self.fixWidth = 150;
+            self.square = YES;
+            self.minSize = CGSizeMake(150, 150);
             self.paddingTopCenter = 25.0;
             self.paddingCenterBottom = 25.0;
             self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
