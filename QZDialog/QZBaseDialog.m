@@ -295,13 +295,14 @@
     
     // Enforce minsize and quare rules
 	if (square) {
-		CGFloat max = MAX(totalSize.width, totalSize.height);
-		if (max <= bounds.size.width - 2 * margin) {
-			totalSize.width = max;
-		}
-		if (max <= bounds.size.height - 2 * margin) {
-			totalSize.height = max;
-		}
+        CGFloat max = MAX(totalSize.width, totalSize.height);
+        
+        if (max <= bounds.size.width - 2 * margin) {
+            totalSize.width = max;
+        }
+        if (max <= bounds.size.height - 2 * margin) {
+            totalSize.height = max;
+        }
 	}
     
     if (totalSize.width < minSize.width) {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED1BC0AE16DF028000998820 /* MB_Icon_Tips@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED1BC0AD16DF028000998820 /* MB_Icon_Tips@2x.png */; };
+		ED33BC8016E0ABE200669271 /* icon_failure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED33BC7F16E0ABE200669271 /* icon_failure@2x.png */; };
 		ED67B95A16DDFF73002CB0ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED67B95916DDFF73002CB0ED /* UIKit.framework */; };
 		ED67B95C16DDFF73002CB0ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED67B95B16DDFF73002CB0ED /* Foundation.framework */; };
 		ED67B95E16DDFF73002CB0ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED67B95D16DDFF73002CB0ED /* CoreGraphics.framework */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		ED1BC0AD16DF028000998820 /* MB_Icon_Tips@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MB_Icon_Tips@2x.png"; sourceTree = "<group>"; };
+		ED33BC7F16E0ABE200669271 /* icon_failure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_failure@2x.png"; sourceTree = "<group>"; };
 		ED67B95616DDFF73002CB0ED /* QZDialogDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QZDialogDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED67B95916DDFF73002CB0ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ED67B95B16DDFF73002CB0ED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +157,7 @@
 		ED67B97D16DE007E002CB0ED /* alertDialog */ = {
 			isa = PBXGroup;
 			children = (
+				ED33BC7F16E0ABE200669271 /* icon_failure@2x.png */,
 				ED67B97E16DE007E002CB0ED /* bg_alertdialog@2x.png */,
 				ED67B97F16DE007E002CB0ED /* bg_alertdialog_success@2x.png */,
 				ED67B98016DE007E002CB0ED /* btn_alertdiaglog@2x.png */,
@@ -244,6 +247,7 @@
 				ED67B99216DE007E002CB0ED /* inputbox_remark@2x.png in Resources */,
 				ED67B99316DE007E002CB0ED /* Thumbs.db in Resources */,
 				ED1BC0AE16DF028000998820 /* MB_Icon_Tips@2x.png in Resources */,
+				ED33BC8016E0ABE200669271 /* icon_failure@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

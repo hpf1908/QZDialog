@@ -53,7 +53,7 @@
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
 	hud.title = @"哈哈哈哈";
-	hud.content = @"ddfdfdf";
+	hud.content = @"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容";
 	hud.alertMode = QZAlertCancel;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES];
@@ -72,8 +72,9 @@
 - (IBAction)showWithProgress:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-    hud.title = @"正在加载视频";
-//    hud.content = @"正在加载视频";
+//    hud.title = @"正在加载视频";
+//    hud.content = @"登陆中";
+    hud.content = @"登陆中登陆中陆中";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:3.0f];
@@ -92,8 +93,20 @@
 - (IBAction)showWithTip:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-	hud.title = @"加入特别关心哈哈";
-	hud.content = @"用电脑登陆查看吧哈哈";
+	hud.title = @"发送成功";
+	hud.content = @"哈哈哈";
+	hud.alertMode = QZAlertTip;
+	hud.removeFromSuperViewOnHide = YES;
+	[hud show:YES hideAfterDelay:5.0f];
+}
+
+- (IBAction)showWithTipImage:(id)sender
+{
+    QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:hud];
+	hud.title = @"发送失败";
+	hud.content = @"输入内容不能为空";
+    hud.tipImage = [UIImage imageNamed:@"icon_failure"];
 	hud.alertMode = QZAlertTip;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:5.0f];

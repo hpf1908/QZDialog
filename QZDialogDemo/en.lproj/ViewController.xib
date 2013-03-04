@@ -234,10 +234,32 @@
 								<reference key="IBUIFontDescription" ref="594493268"/>
 								<reference key="IBUIFont" ref="164062545"/>
 							</object>
-							<object class="IBUIButton" id="708229432">
+							<object class="IBUIButton" id="1031679072">
 								<reference key="NSNextResponder" ref="713622695"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{38, 443}, {244, 44}}</string>
+								<reference key="NSSuperview" ref="713622695"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<int key="IBUIButtonType">1</int>
+								<string key="IBUINormalTitle">QZAlertCustomTipImg</string>
+								<reference key="IBUIHighlightedTitleColor" ref="325629875"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<reference key="IBUINormalTitleShadowColor" ref="858455070"/>
+								<reference key="IBUIFontDescription" ref="594493268"/>
+								<reference key="IBUIFont" ref="164062545"/>
+							</object>
+							<object class="IBUIButton" id="708229432">
+								<reference key="NSNextResponder" ref="713622695"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{38, 496}, {244, 44}}</string>
 								<reference key="NSSuperview" ref="713622695"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -386,6 +408,15 @@
 					</object>
 					<int key="connectionID">39</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">showWithTipImage:</string>
+						<reference key="source" ref="1031679072"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">42</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -427,6 +458,7 @@
 							<reference ref="921973399"/>
 							<reference ref="732563304"/>
 							<reference ref="708229432"/>
+							<reference ref="1031679072"/>
 						</array>
 						<reference key="parent" ref="774585933"/>
 					</object>
@@ -475,6 +507,11 @@
 						<reference key="object" ref="708229432"/>
 						<reference key="parent" ref="713622695"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">40</int>
+						<reference key="object" ref="1031679072"/>
+						<reference key="parent" ref="713622695"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -491,6 +528,7 @@
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="37.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -498,7 +536,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">39</int>
+			<int key="maxID">42</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -515,6 +553,7 @@
 						<string key="showWithProgress:">id</string>
 						<string key="showWithProgressButton:">id</string>
 						<string key="showWithTip:">id</string>
+						<string key="showWithTipImage:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="showWithCancel:">
@@ -551,6 +590,10 @@
 						</object>
 						<object class="IBActionInfo" key="showWithTip:">
 							<string key="name">showWithTip:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showWithTipImage:">
+							<string key="name">showWithTipImage:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

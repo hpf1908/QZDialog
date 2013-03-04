@@ -144,9 +144,11 @@ typedef enum {
                            animated:(BOOL)animated
                      hideAfterDelay:(float)delay;
 
+//获取存在于指定view中的所有浮层
 + (NSArray *)allDlgsForView:(UIView *)view;
 
-+ (NSUInteger)hideAllHUDsForView:(UIView *)view animated:(BOOL)animated;
+//隐藏所有指定view中的所有浮层
++ (NSUInteger)hideAllDlgsForView:(UIView *)view animated:(BOOL)animated;
 
 + (BOOL)hideDlgForView:(UIView *)view animated:(BOOL)animated;
 

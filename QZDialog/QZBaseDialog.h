@@ -134,12 +134,16 @@ typedef enum {
 
 - (void)showWhileExecuting:(SEL)method onTarget:(id)target withObject:(id)object animated:(BOOL)animated;
 
+//弹出浮层并在delay时间之后消失
 - (void)show:(BOOL)animated hideAfterDelay:(float)delay;
 
+//动画展示浮动层
 - (void)show:(BOOL)animated;
 
+//动画隐藏浮动层
 - (void)hide:(BOOL)animated;
 
+//在delay时间之后让浮动层消失
 - (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay;
 
 - (void)cleanUp;

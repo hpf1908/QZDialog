@@ -152,7 +152,7 @@ static const CGFloat kTipHeight = 80.0;
 	return [NSArray arrayWithArray:huds];
 }
 
-+ (NSUInteger)hideAllHUDsForView:(UIView *)view animated:(BOOL)animated
++ (NSUInteger)hideAllDlgsForView:(UIView *)view animated:(BOOL)animated
 {
     NSArray *huds = [self allDlgsForView:view];
 	for (QZAlertDialog *hud in huds) {
@@ -325,50 +325,76 @@ static const CGFloat kTipHeight = 80.0;
     _inputTextField = nil;
     
     switch (self.alertMode) {
-        case QZAlertConfirm:
-        case QZAlertCancel:
-        case QZAlertInput:
+        case QZAlertConfirm: {
+            self.maskType = QZDialogMaskOpacity;
+            self.fixWidth = kFixOuterWidth;
+            self.square = NO;
+            self.minSize = CGSizeZero;
+            self.paddingTopCenter = 10.0;
+            self.paddingCenterBottom = 15.0;
+            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+        } break;
+        case QZAlertCancel: {
+            self.maskType = QZDialogMaskOpacity;
+            self.fixWidth = kFixOuterWidth;
+            self.square = NO;
+            self.minSize = CGSizeZero;
+            self.paddingTopCenter = 10.0;
+            self.paddingCenterBottom = 15.0;
+            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+        } break;
+        case QZAlertInput:{
+            self.maskType = QZDialogMaskOpacity;
+            self.fixWidth = kFixOuterWidth;
+            self.square = NO;
+            self.minSize = CGSizeZero;
+            self.paddingTopCenter = 15.0;
+            self.paddingCenterBottom = 15.0;
+            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+        } break;
         case QZAlertProgressWithButton: {
             self.maskType = QZDialogMaskOpacity;
             self.fixWidth = kFixOuterWidth;
             self.square = NO;
             self.minSize = CGSizeZero;
+            self.paddingTopCenter = 25.0;
+            self.paddingCenterBottom = 25.0;
+            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
         } break;
         case QZAlertProgress:{
             self.maskType = QZDialogMaskNone;
             self.fixWidth = 0;
             self.square = NO;
-            self.minSize = CGSizeMake(100, 100);
+            self.minSize = CGSizeMake(130, 130);
+            self.paddingTopCenter = 25.0;
+            self.paddingCenterBottom = 25.0;
+            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
         } break;
         case QZAlertTip: {
             self.maskType = QZDialogMaskNone;
-            self.fixWidth = 0;
+            self.fixWidth = 150;
             self.square = YES;
             self.minSize = CGSizeMake(150, 150);
+            self.paddingTopCenter = 5.0;
+            self.paddingCenterBottom = 0.0;
+            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0f];
+            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:14.0f];
         } break;
         case QZAlertTipCustomInCenter: {
             self.maskType = QZDialogMaskNone;
             self.fixWidth = 0;
             self.square = NO;
             self.minSize = CGSizeMake(100, 100);
+            self.paddingTopCenter = 15.0;
+            self.paddingCenterBottom = 15.0;
+            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
         } break;
-    }
-    
-    if(self.alertMode == QZAlertProgressWithButton) {
-        self.paddingTopCenter = 25.0;
-        self.paddingCenterBottom = 25.0;
-        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
-    } else if(self.alertMode == QZAlertTip) {
-        self.paddingTopCenter = 5.0;
-        self.paddingCenterBottom = 5.0;
-        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0f];
-		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:14.0f];
-    } else {
-        self.paddingTopCenter = 15.0;
-        self.paddingCenterBottom = 15.0;
-        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
     }
     
     [self setupTopView];
@@ -544,7 +570,7 @@ static const CGFloat kTipHeight = 80.0;
                 CGSize detailsLabelSize = [self.content sizeWithFont:contentLabel.font
                                                    constrainedToSize:maxSize lineBreakMode:contentLabel.lineBreakMode];
                 return detailsLabelSize;
-            }
+            } 
         } break;
         case QZAlertInput:
         case QZAlertProgress:
@@ -570,7 +596,15 @@ static const CGFloat kTipHeight = 80.0;
         case QZAlertProgressWithButton:{
         } break;
         case QZAlertProgress:
-        case QZAlertTip:
+        case QZAlertTip:{
+            //tip模式不支持多行文本
+            if([self.bottomView isKindOfClass:[UILabel class]]) {
+                UILabel* contentLabel = (UILabel*)self.bottomView;
+                CGSize labelSize = [self.content sizeWithFont:contentLabel.font];
+                labelSize.width = MIN(labelSize.width, maxSize.width);
+                return labelSize;
+            }
+        } break;
         case QZAlertTipCustomInCenter: {
             if([self.bottomView isKindOfClass:[UILabel class]]) {
                 UILabel* contentLabel = (UILabel*)self.bottomView;

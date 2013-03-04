@@ -20,6 +20,7 @@
 - (IBAction)showWithProgress:(id)sender;
 - (IBAction)showWithProgressButton:(id)sender;
 - (IBAction)showWithTip:(id)sender;
+- (IBAction)showWithTipImage:(id)sender;
 - (IBAction)showWithLabelMixed:(id)sender;
 - (IBAction)showWithCustomInCenter:(id)sender;
 
