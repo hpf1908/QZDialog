@@ -234,7 +234,7 @@
                 maxSize.height -= paddingTopCenter;
                 totalSize.height+= paddingTopCenter;
             }
-        }  
+        }
         totalSize.height += bottomSize.height;
     }
     
@@ -244,6 +244,25 @@
     
     totalSize.width += paddingLeft + paddingRight;
 	totalSize.height += paddingTop + paddingBottom;
+    
+    // Enforce minsize and quare rules
+	if (square) {
+        CGFloat max = MAX(totalSize.width, totalSize.height);
+        
+        if (max <= bounds.size.width - 2 * margin) {
+            totalSize.width = max;
+        }
+        if (max <= bounds.size.height - 2 * margin) {
+            totalSize.height = max;
+        }
+	}
+    
+    if (totalSize.width < minSize.width) {
+		totalSize.width = minSize.width;
+	}
+	if (totalSize.height < minSize.height) {
+		totalSize.height = minSize.height;
+	}
     
     // Position elements
 	CGFloat yPos = roundf(((bounds.size.height - totalSize.height) / 2)) + paddingTop + yOffset;
@@ -292,25 +311,6 @@
         self.bottomView.frame = bottomRect;
         yPos+= centerSize.height;
     }
-    
-    // Enforce minsize and quare rules
-	if (square) {
-        CGFloat max = MAX(totalSize.width, totalSize.height);
-        
-        if (max <= bounds.size.width - 2 * margin) {
-            totalSize.width = max;
-        }
-        if (max <= bounds.size.height - 2 * margin) {
-            totalSize.height = max;
-        }
-	}
-    
-    if (totalSize.width < minSize.width) {
-		totalSize.width = minSize.width;
-	}
-	if (totalSize.height < minSize.height) {
-		totalSize.height = minSize.height;
-	}
     
     self.size = totalSize;
 }
@@ -426,7 +426,7 @@
         [self addSubview:_topView];
         [self refresh];
     }
-
+    
 }
 
 - (void)setCenterView:(UIView *)centerView
@@ -510,6 +510,7 @@
 }
 
 - (void)show:(BOOL)animated {
+    isFinished = NO;
 	useAnimation = animated;
 	// If the grace time is set postpone the HUD display
 	if (self.graceTime > 0.0) {
@@ -546,10 +547,8 @@
 }
 
 - (void)hideUsingAnimation:(BOOL)animated {
-	// Fade out
-    self.showStarted = nil;
-    
 	if (animated && showStarted) {
+        
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.30];
 		[UIView setAnimationDelegate:self];
@@ -569,7 +568,9 @@
 		self.alpha = 0.0f;
 		[self done];
 	}
-
+    
+    // Fade out
+    self.showStarted = nil;
 }
 
 - (void)hide:(BOOL)animated {
@@ -605,6 +606,10 @@
 }
 
 - (void)done {
+    if(isFinished) {
+        return;
+    }
+    
 	isFinished = YES;
 	self.alpha = 0.0f;
     
@@ -615,12 +620,13 @@
 	}
 #endif
     
-    if (removeFromSuperViewOnHide) {
-		[self removeFromSuperview];
-	}
-    
     if ([_delegate respondsToSelector:@selector(qzDialogWasHidden:)]) {
 		[_delegate performSelector:@selector(qzDialogWasHidden:) withObject:self];
+	}
+    
+    //此时可能已经先release调用dealloc函数了
+    if (removeFromSuperViewOnHide) {
+		[self removeFromSuperview];
 	}
 }
 

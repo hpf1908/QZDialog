@@ -10,8 +10,12 @@
 #import "QZBaseDialog_protected.h"
 #import <QuartzCore/QuartzCore.h>
 
-static const CGFloat kTitleLableFontSize = 20.f;
-static const CGFloat kContentLabelFontSize = 16.f;
+static const CGFloat kConfirmTitleLableFontSize = 20.f;
+static const CGFloat kConfirmContentLabelFontSize = 16.f;
+
+static const CGFloat kTipTitleLableFontSize = 18.f;
+static const CGFloat kTipContentLabelFontSize = 14.f;
+
 static const CGFloat kFixInnerWidth = 260.0f;
 static const CGFloat kFixOuterWidth = 296.0f;
 static const CGFloat kButtonsHeight = 48.0f;
@@ -19,6 +23,12 @@ static const CGFloat kInputKeyboardMargin = 15.0f;
 
 static const CGFloat kTipWidth  = 80.0f;
 static const CGFloat kTipHeight = 80.0;
+
+#define kAlertTitleFontName   @"HelveticaNeue-Bold"
+#define kAlertContentFontName @"HelveticaNeue"
+
+#define kConfirmBgImage       @"bg_alertdialog"
+#define kTipBgImage           @"bg_alertdialog_success"
 
 @implementation QZAlertDialog
 
@@ -156,7 +166,6 @@ static const CGFloat kTipHeight = 80.0;
 {
     NSArray *huds = [self allDlgsForView:view];
 	for (QZAlertDialog *hud in huds) {
-		hud.removeFromSuperViewOnHide = YES;
 		[hud hide:animated];
 	}
 	return [huds count];
@@ -166,7 +175,6 @@ static const CGFloat kTipHeight = 80.0;
 {
     QZAlertDialog *hud = [QZAlertDialog dlgForView:view];
 	if (hud != nil) {
-		hud.removeFromSuperViewOnHide = YES;
 		[hud hide:animated];
 		return YES;
 	}
@@ -272,8 +280,9 @@ static const CGFloat kTipHeight = 80.0;
         self.alertMode = QZAlertConfirm;
         self.maskOpacity = 0.4f;
         self.margin = 15.0f;
-        self.paddingTop = 15.0;
-        self.paddingBottom = 15.0;
+        //由于上下都有阴影，所以设置的边距要加上阴影的大小，15 + 5
+        self.paddingTop = 25.0;
+        self.paddingBottom = 25.0;
         self.paddingLeft = 15.0;
         self.paddingRight = 15.0;
         self.autoCloseAfterClick = YES;
@@ -286,12 +295,12 @@ static const CGFloat kTipHeight = 80.0;
         self.cancelBlock = nil;
 #endif
         
-        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kConfirmTitleLableFontSize];
+		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kConfirmContentLabelFontSize];
         self.tipImage = [UIImage imageNamed:@"icon_success"];
         _inputText = @"";
         self.backgroundColor = [UIColor clearColor];
-        self.dlgBackGroundImage = [[UIImage imageNamed:@"bg_alertdialog"] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
+        self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         [self setupAll];
     }
 	return self;
@@ -332,8 +341,11 @@ static const CGFloat kTipHeight = 80.0;
             self.minSize = CGSizeZero;
             self.paddingTopCenter = 10.0;
             self.paddingCenterBottom = 15.0;
-            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
+            self.paddingTop = 19.0;
+            self.paddingBottom = 19.0;
+            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
+            self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         } break;
         case QZAlertCancel: {
             self.maskType = QZDialogMaskOpacity;
@@ -342,8 +354,11 @@ static const CGFloat kTipHeight = 80.0;
             self.minSize = CGSizeZero;
             self.paddingTopCenter = 10.0;
             self.paddingCenterBottom = 15.0;
-            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+            self.paddingTop = 19.0;
+            self.paddingBottom = 19.0;
+            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
+            self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         } break;
         case QZAlertInput:{
             self.maskType = QZDialogMaskOpacity;
@@ -352,8 +367,11 @@ static const CGFloat kTipHeight = 80.0;
             self.minSize = CGSizeZero;
             self.paddingTopCenter = 15.0;
             self.paddingCenterBottom = 15.0;
-            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+            self.paddingTop = 19.0;
+            self.paddingBottom = 19.0;
+            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
+            self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         } break;
         case QZAlertProgressWithButton: {
             self.maskType = QZDialogMaskOpacity;
@@ -362,38 +380,50 @@ static const CGFloat kTipHeight = 80.0;
             self.minSize = CGSizeZero;
             self.paddingTopCenter = 25.0;
             self.paddingCenterBottom = 25.0;
-            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+            self.paddingTop = 19.0;
+            self.paddingBottom = 19.0;
+            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
+            self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         } break;
         case QZAlertProgress:{
             self.maskType = QZDialogMaskNone;
-            self.fixWidth = 150;
+            self.fixWidth = 175;
             self.square = YES;
-            self.minSize = CGSizeMake(150, 150);
-            self.paddingTopCenter = 25.0;
-            self.paddingCenterBottom = 25.0;
-            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+            self.minSize = CGSizeMake(175, 175);
+            self.paddingTopCenter = 5.0;
+            self.paddingCenterBottom = 7.0;
+            self.paddingTop = 25.0;
+            self.paddingBottom = 25.0;
+            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
+            self.dlgBackGroundImage = [[UIImage imageNamed:kTipBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         } break;
         case QZAlertTip: {
             self.maskType = QZDialogMaskNone;
-            self.fixWidth = 150;
+            self.fixWidth = 175;
             self.square = YES;
-            self.minSize = CGSizeMake(150, 150);
-            self.paddingTopCenter = 5.0;
-            self.paddingCenterBottom = 0.0;
-            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0f];
-            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:14.0f];
+            self.minSize = CGSizeMake(175, 175);
+            self.paddingTopCenter = 13.0;
+            self.paddingCenterBottom = 7.0;
+            self.paddingTop = 25.0;
+            self.paddingBottom = 25.0;
+            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
+            self.dlgBackGroundImage = [[UIImage imageNamed:kTipBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         } break;
         case QZAlertTipCustomInCenter: {
             self.maskType = QZDialogMaskNone;
             self.fixWidth = 0;
             self.square = NO;
             self.minSize = CGSizeMake(100, 100);
-            self.paddingTopCenter = 15.0;
-            self.paddingCenterBottom = 15.0;
-            self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kContentLabelFontSize];
+            self.paddingTopCenter = 13.0;
+            self.paddingCenterBottom = 7.0;
+            self.paddingTop = 25.0;
+            self.paddingBottom = 25.0;
+            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
+            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
+            self.dlgBackGroundImage = [[UIImage imageNamed:kTipBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
         } break;
     }
     
@@ -452,7 +482,7 @@ static const CGFloat kTipHeight = 80.0;
             UIImageView* boarderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kFixInnerWidth, kInputHeight)];
             boarderView.image = [[UIImage imageNamed:@"inputbox_remark"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0];
             
-            UITextField* feild = [[UITextField alloc] initWithFrame:CGRectMake(padding, padding, kFixInnerWidth - 2 * padding, kInputHeight - 2 *padding)];
+            UITextField* feild = [[UITextField alloc] initWithFrame:CGRectMake(padding, padding + 2, kFixInnerWidth - 2 * padding , kInputHeight - 2 *padding)];
             feild.delegate = self;
             feild.placeholder = @"";
             feild.textColor = [UIColor whiteColor];
@@ -468,10 +498,15 @@ static const CGFloat kTipHeight = 80.0;
             self.centerView = [wrapView autorelease];
             
         }; break;
-        case QZAlertProgressWithButton:
+        case QZAlertProgressWithButton:{
+            UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+            indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+            [indicator startAnimating];
+            self.centerView = [indicator autorelease];
+        }; break;
         case QZAlertProgress: {
-            UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]
-                                                  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+            UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, kTipWidth, kTipHeight)];
+            indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
             [indicator startAnimating];
             self.centerView = [indicator autorelease];
         }; break;

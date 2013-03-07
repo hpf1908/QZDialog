@@ -72,9 +72,9 @@
 - (IBAction)showWithProgress:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-//    hud.title = @"正在加载视频";
+    hud.title = @"登陆中";
 //    hud.content = @"登陆中";
-    hud.content = @"正在加载视频反反复复";
+//    hud.content = @"正在加载视频反反飞个";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:3.0f];
@@ -93,8 +93,8 @@
 - (IBAction)showWithTip:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-	hud.title = @"发送成功";
-	hud.content = @"哈哈哈";
+	hud.title = @"发送成功发送成功";
+	hud.content = @"哈哈哈哈哈哈哈哈哈哈";
 	hud.alertMode = QZAlertTip;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:5.0f];
@@ -105,7 +105,7 @@
     QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
 	hud.title = @"发送失败";
-	hud.content = @"输入内容不能为空";
+//	hud.content = @"输入内容不能为空";
     hud.tipImage = [UIImage imageNamed:@"icon_failure"];
 	hud.alertMode = QZAlertTip;
 	hud.removeFromSuperViewOnHide = YES;

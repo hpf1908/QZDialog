@@ -146,6 +146,7 @@ typedef enum {
 //在delay时间之后让浮动层消失
 - (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay;
 
+//清除浮动层
 - (void)cleanUp;
 
 #if NS_BLOCKS_AVAILABLE
