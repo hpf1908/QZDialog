@@ -279,6 +279,7 @@ static const CGFloat kTipHeight = 80.0;
         self.cancelBtnText  = @"取消";
         self.alertMode = QZAlertConfirm;
         self.maskOpacity = 0.4f;
+        self.opacity = 0.9f;
         self.margin = 15.0f;
         //由于上下都有阴影，所以设置的边距要加上阴影的大小，15 + 5
         self.paddingTop = 25.0;
@@ -688,7 +689,7 @@ static const CGFloat kTipHeight = 80.0;
         CGRect boxRect = CGRectMake(roundf((allRect.size.width - self.size.width) / 2) + self.xOffset,
                                     roundf((allRect.size.height - self.size.height) / 2) + self.yOffset, self.size.width, self.size.height);
         
-        [self.dlgBackGroundImage drawInRect:boxRect];
+        [self.dlgBackGroundImage drawInRect:boxRect blendMode:kCGBlendModeNormal alpha:self.opacity];
     } else {
         [super drawRect:rect];
     }
