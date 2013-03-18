@@ -24,4 +24,6 @@
 
 - (void)unregisterFromNotifications;
 
+- (void)deviceOrientationDidChange:(NSNotification *)notification;
+
 @end

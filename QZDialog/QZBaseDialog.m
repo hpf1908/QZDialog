@@ -38,6 +38,7 @@
 @synthesize centerView = _centerView;
 @synthesize bottomView  = _bottomView;
 @synthesize minSize;
+@synthesize fixSize;
 @synthesize size;
 @synthesize margin;
 @synthesize xOffset;
@@ -59,7 +60,6 @@
 @synthesize minShowTime;
 @synthesize autoHeightType;
 @synthesize minShowTimer;
-@synthesize fixWidth;
 @synthesize maskOpacity;
 @synthesize completionBlock;
 @synthesize maskType;
@@ -76,7 +76,7 @@
         self.xOffset = 0.0f;
 		self.yOffset = 0.0f;
         
-        self.fixWidth = 0.0f;
+        self.fixSize = CGSizeMake(0, 0);
         self.paddingTop = 15.0;
         self.paddingBottom = 15.0;
         self.paddingLeft = 15.0;
@@ -85,6 +85,7 @@
         self.paddingTopCenter = 15.0;
         self.paddingCenterBottom = 15.0;
         
+        self.fixSize = CGSizeMake(0, 0);
         self.square = NO;
         self.maskType = QZDialogMaskOpacity;
         self.maskOpacity = 0.0;
@@ -151,13 +152,6 @@
     
     //子view允许的最大尺寸
     CGSize maxSize = CGSizeMake(bounds.size.width - 2 * margin - paddingLeft - paddingRight, bounds.size.height - totalSize.height  - 2 * margin - paddingTop - paddingBottom);
-    
-    //固定宽度
-    float maxWrapWidth = maxSize.width + paddingLeft + paddingRight;
-    
-    if(self.fixWidth > 0 && self.fixWidth <= maxWrapWidth ) {
-        maxSize.width = self.fixWidth - paddingLeft - paddingRight;
-    }
     
     //先计算固定尺寸的view的size，再计算剩下的尺寸
     if(self.topView && self.autoHeightType != QZAutoHeightTop) {
@@ -238,8 +232,12 @@
         totalSize.height += bottomSize.height;
     }
     
-    if(self.fixWidth > 0) {
-        totalSize.width = maxSize.width;
+    if(self.fixSize.width > 0) {
+        totalSize.width = self.fixSize.width;
+    }
+    
+    if(self.fixSize.height > 0) {
+        totalSize.height = self.fixSize.height;
     }
     
     totalSize.width += paddingLeft + paddingRight;

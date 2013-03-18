@@ -43,7 +43,7 @@
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
 	hud.title = @"标题栏";
-	hud.content = @"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容";
+	hud.content = @"内容";
 	hud.alertMode = QZAlertConfirm;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES];
@@ -74,7 +74,7 @@
 	[self.navigationController.view addSubview:hud];
     hud.title = @"登陆中";
 //    hud.content = @"登陆中";
-//    hud.content = @"正在加载视频反反飞个";
+    hud.content = @"正在加载视频反反飞个";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:3.0f];
@@ -106,7 +106,7 @@
 	[self.navigationController.view addSubview:hud];
 	hud.title = @"发送失败";
 //	hud.content = @"输入内容不能为空";
-    hud.tipImage = [UIImage imageNamed:@"icon_failure"];
+    hud.tipImage = [UIImage imageNamed:@"icon_failure@2x.png"];
 	hud.alertMode = QZAlertTip;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:5.0f];
@@ -130,7 +130,7 @@
     QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
 	hud.alertMode = QZAlertTipCustomInCenter;
-    hud.content = @"登录中";
+    hud.title = @"登录中";
     UIImage *check = [UIImage imageNamed:@"MB_Icon_Tips.png"];
     hud.centerView = [[UIImageView alloc] initWithImage:check];
 	hud.removeFromSuperViewOnHide = YES;

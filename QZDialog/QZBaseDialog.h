@@ -65,6 +65,9 @@ typedef enum {
 //最小的尺寸
 @property(nonatomic,assign) CGSize minSize;
 
+//固定的尺寸
+@property(nonatomic,assign) CGSize fixSize;
+
 @property(nonatomic,assign) BOOL   taskInProgress;
 
 //是否在隐藏时将浮层removeFromsuper
@@ -92,9 +95,6 @@ typedef enum {
 
 //浮层的外边距
 @property(nonatomic,assign) CGFloat margin;
-
-//是否固定宽度
-@property(nonatomic,assign) float fixWidth;
 
 //浮层的位置x偏移量
 @property(nonatomic,assign) CGFloat yOffset;
