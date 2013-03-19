@@ -304,7 +304,10 @@ static const CGFloat kTipHeight = 70.0;
         self.tipImage = [UIImage imageNamed:@"icon_success"];
         _inputText = @"";
         self.backgroundColor = [UIColor clearColor];
-        self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
+        UIImage *image = [UIImage imageNamed:kConfirmBgImage];
+        
+        //注意背景图片作图时需要将图片尺寸控制在<= 浮层最小尺寸，否则ios 4.3可能stretch会出现黑边
+        self.dlgBackGroundImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
         [self setupAll];
     }
 	return self;
@@ -339,7 +342,7 @@ static const CGFloat kTipHeight = 70.0;
     
     switch (self.alertMode) {
         case QZAlertConfirm:
-        case QZAlertCancel: 
+        case QZAlertCancel:
         case QZAlertInput:{
             self.maskType = QZDialogMaskOpacity;
             self.fixSize = CGSizeMake(0, 0);
@@ -354,7 +357,8 @@ static const CGFloat kTipHeight = 70.0;
             self.paddingTop = kButtonsPaddingTop;
             self.paddingBottom = kButtonsPaddingBottom;
             self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
-            self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
+            UIImage *image = [UIImage imageNamed:kConfirmBgImage];
+            self.dlgBackGroundImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
         } break;
         case QZAlertProgressWithButton: {
             self.maskType = QZDialogMaskOpacity;
@@ -370,7 +374,8 @@ static const CGFloat kTipHeight = 70.0;
             self.paddingTop = kButtonsPaddingTop;
             self.paddingBottom = kButtonsPaddingBottom;
             self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
-            self.dlgBackGroundImage = [[UIImage imageNamed:kConfirmBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
+            UIImage *image = [UIImage imageNamed:kConfirmBgImage];
+            self.dlgBackGroundImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
         } break;
         case QZAlertProgress:{
             self.maskType = QZDialogMaskNone;
@@ -386,7 +391,13 @@ static const CGFloat kTipHeight = 70.0;
             self.opacity = 0.9f;
             self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
             self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
-            self.dlgBackGroundImage = [[UIImage imageNamed:kTipBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
+            UIImage *image = [UIImage imageNamed:kTipBgImage];
+            float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
+            if (ver < 5.0) {
+                self.dlgBackGroundImage = image;
+            } else {
+                self.dlgBackGroundImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
+            }
         } break;
         case QZAlertTipCustomInCenter:
         case QZAlertTip: {
@@ -403,7 +414,13 @@ static const CGFloat kTipHeight = 70.0;
             self.opacity = 0.9f;
             self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
             self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
-            self.dlgBackGroundImage = [[UIImage imageNamed:kTipBgImage] stretchableImageWithLeftCapWidth:20.0 topCapHeight:20.0];
+            UIImage *image = [UIImage imageNamed:kTipBgImage];
+            float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
+            if (ver < 5.0) {
+                self.dlgBackGroundImage = image;
+            } else {
+                self.dlgBackGroundImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
+            }
         } break;
     }
     
@@ -460,7 +477,8 @@ static const CGFloat kTipHeight = 70.0;
             UIView* wrapView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kButtonsWidth, kInputHeight)];
             
             UIImageView* boarderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kButtonsWidth - 5, kInputHeight)];
-            boarderView.image = [[UIImage imageNamed:@"inputbox_remark"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0];
+            UIImage *image = [UIImage imageNamed:@"inputbox_remark.png"];
+            boarderView.image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
             
             UITextField* feild = [[UITextField alloc] initWithFrame:CGRectMake(padding, padding + 2, kButtonsWidth - 2 * padding , kInputHeight - 2 *padding)];
             feild.delegate = self;
@@ -533,7 +551,7 @@ static const CGFloat kTipHeight = 70.0;
             detailsLabel.text = self.content;
             self.bottomView = [detailsLabel autorelease];
         }
-        break;
+            break;
     }
 }
 

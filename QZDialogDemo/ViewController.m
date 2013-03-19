@@ -28,8 +28,7 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	UIView *content = [[self.view subviews] objectAtIndex:0];
-	((UIScrollView *)content).contentSize = content.bounds.size;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +73,7 @@
 	[self.navigationController.view addSubview:hud];
     hud.title = @"登陆中";
 //    hud.content = @"登陆中";
-    hud.content = @"正在加载视频反反飞个";
+//    hud.content = @"正在加载视频反反飞个";
 	hud.alertMode = QZAlertProgress;
 	hud.removeFromSuperViewOnHide = YES;
 	[hud show:YES hideAfterDelay:3.0f];
@@ -167,8 +166,17 @@
     dialog.title = @"正在加载视频";
     dialog.alertMode = QZAlertProgress;
     [self simulateSleep];
+    dialog.title = @"正在加载视频";
+    dialog.content = @"用电脑登陆查看吧";
+    dialog.alertMode = QZAlertProgressWithButton;
+    [self simulateSleep];
     dialog.title = @"发送成功";
     dialog.content = @"用电脑登陆查看吧";
+    dialog.alertMode = QZAlertTip;
+    [self simulateSleep];
+    dialog.title = @"发送成功";
+    dialog.content = @"";
+    dialog.tipImage = [UIImage imageNamed:@"icon_failure@2x.png"];
     dialog.alertMode = QZAlertTip;
     [self simulateSleep];
     NSLog(@"end mixed");

@@ -157,9 +157,9 @@
 		ED67B97D16DE007E002CB0ED /* alertDialog */ = {
 			isa = PBXGroup;
 			children = (
+				ED33BC7F16E0ABE200669271 /* icon_failure@2x.png */,
 				ED31F4F316F1BF2800AB5C9C /* bg_alertdialog_success@2x.png */,
 				ED31F4F516F1BF2800AB5C9C /* bg_alertdialog@2x.png */,
-				ED33BC7F16E0ABE200669271 /* icon_failure@2x.png */,
 				ED67B98016DE007E002CB0ED /* btn_alertdiaglog@2x.png */,
 				ED67B98116DE007E002CB0ED /* btn_alertdiaglog_click@2x.png */,
 				ED67B98216DE007E002CB0ED /* icon_success@2x.png */,
