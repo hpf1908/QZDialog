@@ -71,7 +71,7 @@
 - (IBAction)showWithProgress:(id)sender {
 	QZAlertDialog* hud = [[QZAlertDialog alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:hud];
-    hud.title = @"登陆中";
+    hud.title = @"正在清除";
 //    hud.content = @"登陆中";
 //    hud.content = @"正在加载视频反反飞个";
 	hud.alertMode = QZAlertProgress;

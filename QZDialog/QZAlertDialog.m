@@ -54,6 +54,23 @@ static const CGFloat kTipHeight = 70.0;
 #endif
 
 #pragma mark - class methods
+- (UIFont*)fontWithName:(NSString*)fontName size:(CGFloat)size
+{
+    UIFont* font = [UIFont fontWithName:fontName size:size];
+    if(font == nil)
+    {
+        if([fontName rangeOfString:@"bold" options:NSCaseInsensitiveSearch].location != NSNotFound)
+        {
+            font = [UIFont boldSystemFontOfSize:size];
+        }
+        if(font == nil)
+        {
+            font = [UIFont systemFontOfSize:size];
+        }
+    }
+    return font;
+}
+
 + (QZAlertDialog*)showConfirmDlgAddedTo:(UIView *)view
                                   title:(NSString*)title
                                 content:(NSString*)content
@@ -299,8 +316,8 @@ static const CGFloat kTipHeight = 70.0;
         self.cancelBlock = nil;
 #endif
         
-        self.titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:kConfirmTitleLableFontSize];
-		self.contentFont = [UIFont fontWithName:@"HelveticaNeue" size:kConfirmContentLabelFontSize];
+        self.titleFont = [self fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
+		self.contentFont = [self fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
         self.tipImage = [UIImage imageNamed:@"icon_success"];
         _inputText = @"";
         self.backgroundColor = [UIColor clearColor];
@@ -351,12 +368,12 @@ static const CGFloat kTipHeight = 70.0;
             self.paddingTopCenter = 10.0;
             self.paddingCenterBottom = 12.0;
             self.opacity = 1.0f;
-            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
             self.paddingLeft = kButtonsPaddingLeft;
             self.paddingRight = kButtonsPaddingRight;
             self.paddingTop = kButtonsPaddingTop;
             self.paddingBottom = kButtonsPaddingBottom;
-            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
+            self.titleFont = [self fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
+            self.contentFont = [self fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
             UIImage *image = [UIImage imageNamed:kConfirmBgImage];
             self.dlgBackGroundImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
         } break;
@@ -368,12 +385,12 @@ static const CGFloat kTipHeight = 70.0;
             self.paddingTopCenter = 25.0;
             self.paddingCenterBottom = 25.0;
             self.opacity = 1.0f;
-            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
             self.paddingLeft = kButtonsPaddingLeft;
             self.paddingRight = kButtonsPaddingRight;
             self.paddingTop = kButtonsPaddingTop;
             self.paddingBottom = kButtonsPaddingBottom;
-            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
+            self.titleFont = [self fontWithName:kAlertTitleFontName size:kConfirmTitleLableFontSize];
+            self.contentFont = [self fontWithName:kAlertContentFontName size:kConfirmContentLabelFontSize];
             UIImage *image = [UIImage imageNamed:kConfirmBgImage];
             self.dlgBackGroundImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
         } break;
@@ -389,8 +406,8 @@ static const CGFloat kTipHeight = 70.0;
             self.paddingTop = 24.0;
             self.paddingBottom = 25.0;
             self.opacity = 0.9f;
-            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
+            self.titleFont = [self fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
+            self.contentFont = [self fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
             UIImage *image = [UIImage imageNamed:kTipBgImage];
             float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
             if (ver < 5.0) {
@@ -412,8 +429,8 @@ static const CGFloat kTipHeight = 70.0;
             self.paddingTop = 24.0;
             self.paddingBottom = 25.0;
             self.opacity = 0.9f;
-            self.titleFont = [UIFont fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
-            self.contentFont = [UIFont fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
+            self.titleFont = [self fontWithName:kAlertTitleFontName size:kTipTitleLableFontSize];
+            self.contentFont = [self fontWithName:kAlertContentFontName size:kTipContentLabelFontSize];
             UIImage *image = [UIImage imageNamed:kTipBgImage];
             float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
             if (ver < 5.0) {
